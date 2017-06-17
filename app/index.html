@@ -1,12 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blocitoff">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Bloc Base Project</title>
+    <title>Blocitoff</title>
     <link rel="stylesheet" href="/styles/main.css">
+
+
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <!-- AngularFire -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBIr6RGbix06XrrK_9BL4Ndci34g-qUnYc",
+            authDomain: "blocitoff-f7b99.firebaseapp.com",
+            databaseURL: "https://blocitoff-f7b99.firebaseio.com",
+            projectId: "blocitoff-f7b99",
+            storageBucket: "",
+            messagingSenderId: "491770433076"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.js"></script>
 </head>
 <body>
-    <h1>READY TO ROCK </h1>
+
+   <h1>lets get started</h1>
+
+    <div ng-controller="SampleCtrl">
+        <div ng-repeat="n in foo">
+            {{n}}
+        </div>
+    </div>
+
+
+    <!-- Application Files -->
     <script src="/scripts/app.js"></script>
 </body>
 </html>
