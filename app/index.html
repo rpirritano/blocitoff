@@ -3,7 +3,13 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Blocitoff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/styles/main.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 
@@ -26,13 +32,34 @@
 </head>
 <body>
 
-   <h1>lets get started</h1>
+   
 
-    <div ng-controller="SampleCtrl">
-        <div ng-repeat="n in foo">
-            {{n}}
+    
+    <div id="divWrapper">
+        <div class="container">
+            <div class="divHeader">
+                <h2>Current Tasks</h2>
+            </div>
+            <div class="divContent">
+                <div ng-controller="SampleCtrl">
+                    <div class="list-group" ng-repeat="taskObject in tasks">
+                      <li class="list-group-item" >{{ taskObject.task }}</li>
+                    </div>
+                    <input type="text" placeholder="Add New Task" ng-model="main.newTask">
+                    <button class="btn btn-sucess" ng-click="FormSubmission(main.newTask)">Submit</button>
+                        
+                    
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+   
+       
+
+
 
 
     <!-- Application Files -->
