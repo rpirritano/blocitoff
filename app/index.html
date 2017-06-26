@@ -41,12 +41,16 @@
                 <h2>Current Tasks</h2>
             </div>
             <div class="divContent">
-                <div ng-controller="SampleCtrl">
-                    <div class="list-group" ng-repeat="taskObject in tasks">
-                      <li class="list-group-item" >{{ taskObject.task }}</li>
-                    </div>
-                    <input type="text" placeholder="Add New Task" ng-model="main.newTask">
-                    <button class="btn btn-sucess" ng-click="FormSubmission(main.newTask)">Submit</button>
+                <div ng-controller="HomeCtrl">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr ng-repeat="taskObject in tasks" ng-hide="expiredTask(task)">
+                                <td>{{ taskObject.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="text" placeholder="Add New Task" ng-model="newTask">
+                    <button class="btn btn-sucess" ng-click="addTask()">New Task</button>
                         
                     
                 </div>
