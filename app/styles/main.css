@@ -136,6 +136,13 @@ body {
 }
 
 
+/* Strikethrough */
+.strikethrough{
+  text-decoration: line-through;
+}
+
+
+
 
 
 

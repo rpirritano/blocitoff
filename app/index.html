@@ -5,6 +5,9 @@
     <title>Blocitoff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/styles/main.css">
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -44,13 +47,29 @@
                 <div ng-controller="HomeCtrl">
                     <table class="table table-striped">
                         <tbody>
-                            <tr ng-repeat="taskObject in tasks" ng-hide="expiredTask(task)">
-                                <td>{{ taskObject.name }}</td>
+                            <tr><input type="text" placeholder="Add New Task" ng-model="newTask">
+                            <select class="custom-select" ng-model="$scope.priority">
+                                <option selected>Task Priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                </select>
+                            <button class="btn btn-sucess" ng-click="addTask()">New Task</button>
+                            <tr ng-repeat="taskObject in tasks" ng-show="!taskObject.expired && !taskObject.completed">
+                      
+                                <td>{{ taskObject.name }}<button ng-click="complete(taskObject)" ng-model="newTask">Complete</button></td>
+                            </tr>
+                            <tr class="strikethrough" ng-repeat="taskObject in completedTasks" ng-hide="completed">
+                                <td> {{ taskObject.name }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <input type="text" placeholder="Add New Task" ng-model="newTask">
-                    <button class="btn btn-sucess" ng-click="addTask()">New Task</button>
+        
+                 
+                    
+                    <div>
+                        <a data-text-swap="Hide Completed Tasks" ng-click="toggle()">Show Completed Tasks</a>
+                    </div>
                         
                     
                 </div>
