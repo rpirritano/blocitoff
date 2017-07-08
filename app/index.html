@@ -45,45 +45,51 @@
             </div>
             <div class="divContent">
                 <div ng-controller="HomeCtrl">
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr><input type="text" placeholder="Add New Task" ng-model="newTask">
-                            <select class="custom-select" ng-model="$scope.priority">
-                                <option selected>Task Priority</option>
-                                <option value="Low">Low</option>
-                                <option value="Medium">Medium</option>
-                                <option value="High">High</option>
-                                </select>
-                            <button class="btn btn-sucess" ng-click="addTask()">New Task</button>
-                            <tr ng-repeat="taskObject in tasks" ng-show="!taskObject.expired && !taskObject.completed">
-                      
-                                <td>{{ taskObject.name }}<button ng-click="complete(taskObject)" ng-model="newTask">Complete</button></td>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label class="sr-only" for="inlineFormInput">Task</label>
+                                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"  id="inlineFormInput" placeholder="Add New Task" ng-model="newTask">
+                                </div>
+                                <div class="form-group">
+                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Priority</label>
+                                    <select class="form_control" id="inlineFormCustomSelect" ng-model="priority">
+                                        <option selected>Choose...</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">                                
+                                    <button class="btn btn-sucess" ng-click="addTask()">New Task</button>
+                                </div>
+                          <table class="table table-striped">    
+                            <thead>
+                            <tr>    
+                                <th> Task </th>
+                                <th></th
+                                <th></th>
+                                <th> Priority </th>
                             </tr>
-                            <tr class="strikethrough" ng-repeat="taskObject in completedTasks" ng-hide="completed">
-                                <td> {{ taskObject.name }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-        
-                 
-                    
-                    <div>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="taskObject in tasks" ng-show="!taskObject.expired && !taskObject.completed">
+                                    <td>{{ taskObject.name }}<td>
+                                    <td>{{ taskObject.priority }}</td>
+                                    <td>{{ taskObject.complete }}</td> 
+                                    <td><button class="item-btn-ok" ng-click="complete(taskObject)" ng-model="newTask"><span class="glyphicon glyphicon-ok"></span>  Completed</button></td>
+                                    <td><button class="item-btn-trash" ng-click="removeTask(taskObject)" ng-model="newTask"><span class="glyphicon glyphicon-trash"></span>  Trash</button></td>
+                                </tr>
+                                <tr class="strikethrough" ng-repeat="taskObject in completedTasks" ng-hide="completed">
+                                    <td> {{ taskObject.name }}</td>
+                                </tr>
+                            </tbody>
+                        </table>                    
                         <a data-text-swap="Hide Completed Tasks" ng-click="toggle()">Show Completed Tasks</a>
                     </div>
-                        
-                    
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-   
-       
-
-
-
+    </div>   
 
     <!-- Application Files -->
     <script src="/scripts/app.js"></script>
